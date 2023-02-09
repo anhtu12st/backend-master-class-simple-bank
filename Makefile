@@ -45,4 +45,15 @@ sqlc:
 test:
 	go test -v -cover ./...
 
+
+#####################
+###  Server go ######
+#####################
+server:
+	go run main.go
+
+
+mock:
+	mockgen -package mockdb -destination db/mock/store.go backend-master-class-simple-bank/db/sqlc Store
+
 .PHONY: network postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 db_docs db_schema sqlc test server mock proto evans redis
